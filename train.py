@@ -48,22 +48,22 @@ joblib.dump(model, "wine_model.pkl")
 
 # === 🔍 2. Phân phối sai số ===
 errors = y_test - y_pred
-plt.figure(figsize=(8, 6))
-sns.histplot(errors, bins=20, kde=True)
-plt.xlabel("Sai số (thực tế - dự đoán)")
-plt.title("Phân phối sai số")
-plt.savefig("plot_error_distribution.png")
-plt.close()
+# plt.figure(figsize=(8, 6))
+# sns.histplot(errors, bins=20, kde=True)
+# plt.xlabel("Sai số (thực tế - dự đoán)")
+# plt.title("Phân phối sai số")
+# plt.savefig("plot_error_distribution.png")
+# plt.close()
 
 # === 🔍 3. Boxplot sai số theo giá trị thực tế ===
-df_result = pd.DataFrame({"actual": y_test, "error": errors})
-plt.figure(figsize=(10, 6))
-sns.boxplot(x="actual", y="error", data=df_result)
-plt.title("Phân phối sai số theo giá trị thực tế")
-plt.xlabel("Chất lượng rượu (thực tế)")
-plt.ylabel("Sai số")
-plt.savefig("plot_boxplot_error_by_quality.png")
-plt.close()
+# df_result = pd.DataFrame({"actual": y_test, "error": errors})
+# plt.figure(figsize=(10, 6))
+# sns.boxplot(x="actual", y="error", data=df_result)
+# plt.title("Phân phối sai số theo giá trị thực tế")
+# plt.xlabel("Chất lượng rượu (thực tế)")
+# plt.ylabel("Sai số")
+# plt.savefig("plot_boxplot_error_by_quality.png")
+# plt.close()
 
 # === 🔍 4. Heatmap tương quan giữa các đặc trưng ===
 plt.figure(figsize=(12, 10))
@@ -74,14 +74,14 @@ plt.savefig("plot_feature_correlation_heatmap.png")
 plt.close()
 
 # === 🔍 5. Feature importance ===
-importances = model.feature_importances_
-features = X.columns
-indices = np.argsort(importances)[::-1]
+# importances = model.feature_importances_
+# features = X.columns
+# indices = np.argsort(importances)[::-1]
 
-plt.figure(figsize=(10, 6))
-sns.barplot(x=importances[indices], y=features[indices])
-plt.title("Mức độ quan trọng của các đặc trưng")
-plt.xlabel("Tỉ lệ ảnh hưởng")
-plt.ylabel("Đặc trưng")
-plt.savefig("plot_feature_importance.png")
-plt.close()
+# plt.figure(figsize=(10, 6))
+# sns.barplot(x=importances[indices], y=features[indices])
+# plt.title("Mức độ quan trọng của các đặc trưng")
+# plt.xlabel("Tỉ lệ ảnh hưởng")
+# plt.ylabel("Đặc trưng")
+# plt.savefig("plot_feature_importance.png")
+# plt.close()
