@@ -37,14 +37,14 @@ print(f"✅ R² Score: {r2:.4f}")
 joblib.dump(model, "wine_model.pkl")
 
 # === 🔍 1. Biểu đồ dự đoán vs thực tế ===
-plt.figure(figsize=(8, 6))
-sns.scatterplot(x=y_test, y=y_pred, alpha=0.6)
-plt.plot([y.min(), y.max()], [y.min(), y.max()], '--r')
-plt.xlabel("Giá trị thực tế")
-plt.ylabel("Dự đoán")
-plt.title("So sánh giá trị thực tế và dự đoán")
-plt.savefig("plot_actual_vs_predicted.png")
-plt.close()
+# plt.figure(figsize=(8, 6))
+# sns.scatterplot(x=y_test, y=y_pred, alpha=0.6)
+# plt.plot([y.min(), y.max()], [y.min(), y.max()], '--r')
+# plt.xlabel("Giá trị thực tế")
+# plt.ylabel("Dự đoán")
+# plt.title("So sánh giá trị thực tế và dự đoán")
+# plt.savefig("plot_actual_vs_predicted.png")
+# plt.close()
 
 # === 🔍 2. Phân phối sai số ===
 errors = y_test - y_pred
