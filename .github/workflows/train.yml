@@ -5,14 +5,15 @@ on:
     paths:
       - '**.py'
       - 'requirements.txt'
-  workflow_dispatch: # Cho phép chạy thủ công
+      - '.github/workflows/train.yml'
+  workflow_dispatch:
 
 jobs:
   train:
     runs-on: ubuntu-latest
 
     steps:
-    - name: ⬇️ Lấy mã nguồn từ GitHub
+    - name: ⬇️ Lấy mã nguồn
       uses: actions/checkout@v3
 
     - name: ⚙️ Cài Python
@@ -25,13 +26,13 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: 🚀 Chạy script huấn luyện
+    - name: 🚀 Huấn luyện mô hình
       run: python train.py
 
-    - name: 📤 Tải lên kết quả (model + ảnh)
-      uses: actions/upload-artifact@v3
+    - name: 📤 Upload kết quả (biểu đồ + model)
+      uses: actions/upload-artifact@v4
       with:
         name: training-results
         path: |
           *.png
-          wine_model.pkl
+          *.pkl
