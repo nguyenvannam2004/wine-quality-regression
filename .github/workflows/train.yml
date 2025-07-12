@@ -1,0 +1,37 @@
+name: Train Wine Quality Model
+
+on:
+  push:
+    paths:
+      - '**.py'
+      - 'requirements.txt'
+  workflow_dispatch: # Cho phép chạy thủ công
+
+jobs:
+  train:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: ⬇️ Lấy mã nguồn từ GitHub
+      uses: actions/checkout@v3
+
+    - name: ⚙️ Cài Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: 📦 Cài thư viện cần thiết
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: 🚀 Chạy script huấn luyện
+      run: python train.py
+
+    - name: 📤 Tải lên kết quả (model + ảnh)
+      uses: actions/upload-artifact@v3
+      with:
+        name: training-results
+        path: |
+          *.png
+          wine_model.pkl
